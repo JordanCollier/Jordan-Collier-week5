@@ -8,10 +8,33 @@
 </head>
 <body id="top">
   <div class="nav navbar navbar-inverse navbar-fixed-top">
+    <div class="container">
     <div class="navbar-header">
+      <%= link_to 'JIC-Week-5', root_path, class: 'navbar-brand' %>
   </div>
+
+</div>
 </div>
   <div class="container">
+    <% flash.each do |type, message| %>
+    <% if type == "notice" %>
+      <b>
+        <center>
+          <div class="alert alert-success">
+            <%= message %>
+          </div>
+        </center>
+      </b>
+    <% elsif type == "alert" %>
+      <b>
+        <center>
+          <div class="alert alert-danger">
+            <%= message %>
+          </div>
+        </center>
+      </b>
+    <% end %>
+  <% end %>
   <%= yield %>
 
 </div>

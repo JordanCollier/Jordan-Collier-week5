@@ -17,7 +17,7 @@ class EventsController < ApplicationController
     @event = Event.new(event_params)
     @event.location_id = params[:location_id]
     if @event.save
-      redirect_to root_path
+      redirect_to root_path, notice: 'Event was successfully created.'
     else
       render :new
     end
@@ -29,7 +29,7 @@ class EventsController < ApplicationController
 
   def update
     if @event.update(event_params)
-      redirect_to root_path, notice: 'Event was successfully updated.'
+      redirect_to location_event_path, notice: 'Event was successfully updated.'
     end
   end
 

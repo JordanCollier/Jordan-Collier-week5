@@ -1,14 +1,61 @@
-<p><%= form_for [@location, @event] do |f| %></p>
 
-<p><%= f.label :description %>
-<%= f.text_field :description %></br></p>
-<p><%= f.label :date %>
-<%= f.date_select :date %></br></p>
-<p><%= f.label :requires_id %>
-<%= f.check_box(:requires_id) %></br></p>
-<p><%= f.submit %></p>
 
-<% if @event.id != nil %>
-    <%= link_to 'Delete', location_event_path, method: :delete, data: { confirm: 'Are you sure?' }, :class => "btn btn-danger" %>
-    <% end %>
-<% end %>
+<%= form_for([@location, @event], html: {:class => "form-horizontal"}) do |f| %>
+  <% if @event.errors.any? %>
+  <div id="error_explanation">
+    <h2><%= pluralize(@event.errors.count, "error") %> prohibited this event from being saved:</h2>
+
+    <ul>
+      <% @event.errors.full_messages.each do |message| %>
+      <li><%= message %></li>
+      <% end %>
+    </ul>
+  </div>
+  <% end %>
+
+  <div class="form-group">
+    <div class="field">
+      <%= f.label :description, :class => 'control-label col-md-2' %>
+
+      <div class='form-controls col-md-4'>
+        <%= f.text_field :description, :class => 'form-control' %>
+      </div>
+    </div>
+  </div>
+
+
+  <div class="form-group">
+    <div class="field">
+      <%= f.label :date, :class => 'control-label col-md-2' %>
+
+      <div class='form-controls col-md-4'>
+        <%= f.date_field :date, :class => 'form-control' %>
+      </div>
+    </div>
+  </div>
+
+  <div class="form-group">
+    <div class="field">
+      <%= f.label :requires_id, :class => 'control-label col-md-2' %>
+
+      <div class='form-controls col-md-4'>
+        <%= f.check_box(:requires_id) %>
+      </div>
+    </div>
+  </div>
+
+
+
+
+  <div class="form-group">
+    <div class="col-md-offset-2 col-md-4">
+      <%= f.submit @submit_name, :class => 'btn btn-primary'%>
+      <% if @event.id != nil %>
+          <%= link_to 'Delete', location_event_path, method: :delete, data: { confirm: 'Are you sure?' }, :class => "btn btn-danger" %>
+          <% end %>
+      <%= link_to 'cancel', location_events_path, class: 'btn btn-default'%>
+
+    </div>
+  </div>
+
+  <% end %>

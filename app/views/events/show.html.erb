@@ -7,7 +7,8 @@
 </div>
 
 <ol class="breadcrumb">
-  <li><a href="/events">events</a></li>
+  <li><%= link_to "Locations", @event.location  %></li>
+  <li><%= link_to @event.location.name, @event.location  %></li>
   <li class="active"><%= @event.description %></li>
 </ol>
 

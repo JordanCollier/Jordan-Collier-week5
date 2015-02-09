@@ -1,12 +1,59 @@
-<%= form_for @location do |f| %>
+<%= form_for(@location, html: {:class => "form-horizontal"}) do |f| %>
+  <% if @location.errors.any? %>
+  <div id="error_explanation">
+    <h2><%= pluralize(@location.errors.count, "error") %> prohibited this location from being saved:</h2>
 
-<p><%= f.label :name %>
-<%= f.text_field :name %></br></p>
-<p><%= f.label :address %>
-<%= f.text_field :address %></br></p>
-<p><%= f.label :zip_code%>
-<%= f.number_field :zip_code %></br></p>
+    <ul>
+      <% @location.errors.full_messages.each do |message| %>
+      <li><%= message %></li>
+      <% end %>
+    </ul>
+  </div>
+  <% end %>
 
-<p><%= f.submit %></p>
+  <div class="form-group">
+    <div class="field">
+      <%= f.label :name, :class => 'control-label col-md-2' %>
 
-<% end %>
+      <div class='form-controls col-md-4'>
+        <%= f.text_field :name, :class => 'form-control' %>
+      </div>
+    </div>
+  </div>
+
+
+  <div class="form-group">
+    <div class="field">
+      <%= f.label :address, :class => 'control-label col-md-2' %>
+
+      <div class='form-controls col-md-4'>
+        <%= f.text_field :address, :class => 'form-control' %>
+      </div>
+    </div>
+  </div>
+
+  <div class="form-group">
+    <div class="field">
+      <%= f.label :zip_code, :class => 'control-label col-md-2' %>
+
+      <div class='form-controls col-md-4'>
+        <%= f.number_field :zip_code %>
+      </div>
+    </div>
+  </div>
+
+
+
+
+  <div class="form-group">
+    <div class="col-md-offset-2 col-md-4">
+      <%= f.submit @submit_name, :class => 'btn btn-primary'%>
+      <% if @location.id != nil %>
+          <%= link_to 'Delete', root_path, method: :delete, data: { confirm: 'Are you sure?' }, :class => "btn btn-danger" %>
+          <% end %>
+      <%= link_to 'cancel', root_path, class: 'btn btn-default'%>
+
+    </div>
+  </div>
+
+  <% end %>

@@ -1,1 +1,12 @@
+<div class="page-header">
+<h1>Edit Event</h1>
+</div>
+
+<ol class="breadcrumb">
+  <li><%= link_to "Locations", root_path %></li>
+  <li><%= link_to @event.location.name, location_path(@location) %></li>
+  <li><%= link_to @event.description, location_event_path  %></li>
+  <li class="active">Edit Event</li>
+</ol>
+
 <%= render "form" %>

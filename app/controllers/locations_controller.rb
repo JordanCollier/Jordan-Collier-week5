@@ -6,7 +6,7 @@ class LocationsController < ApplicationController
   end
 
   def show
-    
+
   end
 
   def new
@@ -16,7 +16,7 @@ class LocationsController < ApplicationController
   def create
     @location = Location.new(location_params)
     if @location.save
-      redirect_to root_path
+      redirect_to root_path, notice: 'Location was successfully created.'
     else
       render :new
     end
@@ -33,7 +33,7 @@ class LocationsController < ApplicationController
 
   def destroy
     if @location.destroy
-      redirect_to root_path
+      redirect_to root_path, notice: 'Location was DESTROYED.'
     end
   end
 
