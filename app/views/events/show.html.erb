@@ -1,0 +1,21 @@
+
+<div class="page-header">
+  <div class="pull-right  ">
+  <%= link_to 'Edit', edit_location_event_path, :class => "btn btn-info"  %>
+</div>
+  <h1><%= @event.description %></h1>
+</div>
+
+<ol class="breadcrumb">
+  <li><a href="/events">events</a></li>
+  <li class="active"><%= @event.description %></li>
+</ol>
+
+<dl class="dl-horizontal">
+  <dt><strong>Description:</strong></dt>
+  <dd><%= @event.description %></dd>
+  <dt><strong>Date:</strong></dt>
+  <dd><%= @event.date %></dd>
+  <dt><strong>requires_id:</strong></dt>
+  <dd><%= @event.requires_id %></dd>
+</dl>

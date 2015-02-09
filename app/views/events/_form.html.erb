@@ -1,0 +1,14 @@
+<p><%= form_for [@location, @event] do |f| %></p>
+
+<p><%= f.label :description %>
+<%= f.text_field :description %></br></p>
+<p><%= f.label :date %>
+<%= f.date_select :date %></br></p>
+<p><%= f.label :requires_id %>
+<%= f.check_box(:requires_id) %></br></p>
+<p><%= f.submit %></p>
+
+<% if @event.id != nil %>
+    <%= link_to 'Delete', location_event_path, method: :delete, data: { confirm: 'Are you sure?' }, :class => "btn btn-danger" %>
+    <% end %>
+<% end %>
